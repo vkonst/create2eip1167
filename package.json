@@ -1,0 +1,20 @@
+{
+  "name": "@vkonst/create2eip1167",
+  "version": "0.0.1",
+  "main": "index.js",
+  "license": "MIT",
+  "author": "Vadim Konstantinov <fatihkalifa@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/vkonst/create2eip1167.git"
+  },
+  "scripts": {
+    "test": "npx truffle test",
+    "compile": "npx truffle compile",
+    "version": "npx truffle version"
+  },
+  "devDependencies": {
+    "truffle": "^5.1.50"
+  },
+  "keywords": [ "EVM", "EIP-1167", "CREATE2" ]
+}
