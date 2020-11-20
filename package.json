@@ -4,14 +4,13 @@
   "main": "index.js",
   "license": "MIT",
   "author": "Vadim Konstantinov <fatihkalifa@gmail.com>",
+  "homepage": "https://github.com/vkonst/create2eip1167#create2eip1167",
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/vkonst/create2eip1167.git"
   },
   "scripts": {
-    "test": "npx truffle test",
-    "compile": "npx truffle compile",
-    "version": "npx truffle version"
+    "test": "npx truffle test"
   },
   "devDependencies": {
     "truffle": "^5.1.50"
