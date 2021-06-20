@@ -1,11 +1,15 @@
 # create2eip1167
-A tiny lib that supports EIP-1167 proxies deployment with CREATE2
-> - [EIP-1167 proxy](https://eips.ethereum.org/EIPS/eip-1167) is a minimal non-upgradable proxy contract, 55 bytes only, that forwards all calls and 100% of the gas to the proxied contract (the "implementation")
-> - [CREATE2](https://eips.ethereum.org/EIPS/eip-1014) is an EVM opcode that provides the ability to predict the address where a contract will be deployed
+A tiny lib for EIP-1167 proxy deployment with CREATE2
+> - [EIP-1167 proxy](https://eips.ethereum.org/EIPS/eip-1167) is a minimal non-upgradable proxy contract, 55 bytes only, that forwards all calls and 100% of gas to the proxied contract (the "implementation")
+> - [CREATE2](https://eips.ethereum.org/EIPS/eip-1014) is an EVM opcode that allow to compute the address where a contract will be deployed
 >
-> Combining those two, provide the ability
-> - to get to know the address of an arbitrary "implementation" contract without deploying it 
-> - to save on gas cost paid for re-deployment of the same "implementation" contract for a new instance
+> Combining those two, let
+> - save gas avoiding re-deployment of the "implementation" code for a new instance of the contract
+> - know the address of a proxy without deploying it (for example, on user invite)
+> - deploy the proxy contract only if and when it is needed, avoid deploying unneeded proxies
+> (for example, if an invited user ignores the invitation)
+
+_NB: It takes ~66e+3 gas to deploy the EIP-1167 proxy. The proxy adds 2.7e+3 gas to every call of the implementation (measured for "istanbul" EVM version)._ 
 
 ## Install
 ```

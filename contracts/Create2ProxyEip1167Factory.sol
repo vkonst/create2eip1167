@@ -1,5 +1,5 @@
 // "SPDX-License-Identifier: MIT"
-pragma solidity ^0.6.0;
+pragma solidity ^0.8.2;
 
 
 /**
@@ -63,6 +63,8 @@ contract Create2ProxyEip1167Factory {
      * @param deployer Account that deploys (via CREATE2) the EIP-1167 proxy instance
      * @param logic Contract address the proxy calls (via DELEGATECALL) to
      * @param salt As defined by EIP-1167
+     * Note, `bytes32` has right zero-padding (unlike left padding for `uint256`);
+     * i.e. `encodePacked` 0xC0FE is 0xC0FE000000000000000000000000000000000000000000000000000000000000;
      * @return EIP-1167 proxy instance address
      */
     function _getEip1167ProxyAddress(
@@ -73,7 +75,7 @@ contract Create2ProxyEip1167Factory {
         bytes32 initCodeHash = keccak256(_getEip1167ProxyInitBytecode(logic));
         return
             address(
-                uint256(
+                bytes20(
                     keccak256(
                         abi.encodePacked(hex"ff", deployer, salt, initCodeHash)
                     )
